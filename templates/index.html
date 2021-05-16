@@ -1,0 +1,38 @@
+<!DOCTYPE html>,
+<html>
+<head>
+<title>Python Web Scraper</title>
+</head>
+<body>
+
+<h1 style="text-align: center; font-weight: 600;" > Python Web Scraper Application</h1>
+<p>Type in a target URL to scrape from;</p>
+  
+<div>
+    <label id="url-input" > Target URL: </label>
+    <br />
+    <br />
+    <input id="url-input"
+      type="text"
+      placeholder="Type in a URL"
+      style="height: 40px; width: 20rem; border: 1px solid grey; border-radius: 5px;" 
+    />
+    <br />
+    <button onclick="handleSubmit()" id="submit-btn" style="height: 45px; width: 10rem; border: 1px solid gray;"  > Scrape Data </button>
+</div>
+
+</body>
+ 
+<script>
+
+    function handleSubmit() {
+        fetch("http://localhost:5000/scrape-data")
+        .then((res) => res.json())
+        .then((response) => {
+            console.log(response)
+        })
+        .catch(e => console.log(e))
+    }
+
+</script>
+</html>
