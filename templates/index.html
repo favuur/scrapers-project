@@ -6,33 +6,48 @@
 <body>
 
 <h1 style="text-align: center; font-weight: 600;" > Python Web Scraper Application</h1>
-<p>Type in a target URL to scrape from;</p>
-  
+<p id="explanation" >Type in a target URL to scrape from;</p>
+    
+ <!-- HERE IS A TAG -->
+<p id="favour-1" > FAVOUR IS A THIN LADY </p>
+<p id="favour-2" > FAVOUR IS A THIN LADY 2 </p>
+<p id="favour-3" > FAVOUR IS A THIN LADY 3 </p>
+
+
 <div>
-    <label id="url-input" > Target URL: </label>
+  <p> FAVOUR IS LISTENING </p>
+</div>
+
+<form>
+    <label for="targetUrl" > Target URL: </label>
     <br />
     <br />
-    <input id="url-input"
+    <input
       type="text"
+      id="targetUrl"
       placeholder="Type in a URL"
       style="height: 40px; width: 20rem; border: 1px solid grey; border-radius: 5px;" 
     />
     <br />
-    <button onclick="handleSubmit()" id="submit-btn" style="height: 45px; width: 10rem; border: 1px solid gray;"  > Scrape Data </button>
-</div>
-
+    <button id="submit-btn" style="height: 45px; width: 10rem; border: 1px solid gray;"  > Scrape Data </button>
+</form>
 </body>
- 
+  
 <script>
+      const targetUrl = document.querySelector('#targetUrl')
+      const btn = document.querySelector('#submit-btn')
 
-    function handleSubmit() {
-        fetch("http://localhost:5000/scrape-data")
+      btn.addEventListener('click', (e) => {
+      e.preventDefault()
+
+        // TEMPLATE INTERPOLATION
+        fetch(`http://localhost:5000/scrape?target_url=${targetUrl.value}`)
         .then((res) => res.json())
         .then((response) => {
             console.log(response)
         })
         .catch(e => console.log(e))
-    }
+      })
 
 </script>
 </html>
