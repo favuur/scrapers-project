@@ -9,7 +9,7 @@ app.run(use_reloader=True)
 def performScrape(target_url):
     with urllib.request.urlopen(target_url) as response:
         html=response.read()
-        soup=BeautifulSoup(html,"html.parser").b
+        soup=BeautifulSoup(html,"html.parser").p
         
         print(soup)
 
