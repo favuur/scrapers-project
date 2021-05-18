@@ -1,0 +1,29 @@
+.container {
+  background-color: #ebf4fd;
+  height: 90vh;
+  color: #1d1b84;
+  display: flex;
+  text-align: center;
+  box-shadow: 0 1px 2px#c0c0c0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.input-item {
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  width: 25rem;
+  font-size: 15px;
+  padding: 0.5rem 1rem;
+}
+
+.scrape-btn {
+  background-color: #1d1b84;
+  color: #fff;
+  width: 22rem;
+  padding: 0.2rem 1rem;
+  border: 1px solid #1d1b84;
+  border-radius: 4px;
+  margin: 1rem 0.5rem;
+}

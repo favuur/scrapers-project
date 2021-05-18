@@ -1,45 +1,68 @@
 <!DOCTYPE html>,
 <html>
-<head>
-<title>Python Web Scraper</title>
-</head>
-<body>
-
-<h1 style="text-align: center; font-weight: 600;" > Python Web Scraper Application</h1>
-<p id="explanation"a >Type in a target URL to scrape from;</p>
-    
- 
-
-<form>
-    <label for="targetUrl" > Target URL: </label>
-    <br />
-    <br />
-    <input
-      type="text"
-      id="targetUrl"
-      placeholder="Type in a URL"
-      style="height: 40px; width: 20rem; border: 1px solid grey; border-radius: 5px;" 
+  <head>
+    <title>Python Web Scraper</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
     />
-    <br />
-    <button id="submit-btn" style="height: 45px; width: 10rem; border: 1px solid gray;"  > Scrape Data </button>
-</form>
-</body>
-  
-<script>
-      const targetUrl = document.querySelector('#targetUrl')
-      const btn = document.querySelector('#submit-btn')
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h1 style="text-align: center; font-weight: 600">
+          Python Web Scraper
+        </h1>
+        <p id="explanation" a>Type in a target URL to scrape from;</p>
+        <hr />
+        <br />
+        <form>
+          <label for="targetUrl" id="url-label" > Target URL: </label>
+          <br />
+          <input
+            type="text"
+            class="input-item"
+            id="targetUrl"
+            placeholder="Type in a URL"
+            style="
+              height: 40px;
+              width: 20rem;
+              border: 1px solid grey;
+              border-radius: 5px;
+            "
+          />
+          <br />
+          <button
+          class="scrape-btn"
+            id="submit-btn"
+            style="height: 45px; width: 10rem; border: 1px solid gray"
+          >
+            Scrape Data
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
 
-      btn.addEventListener('click', (e) => {
-      e.preventDefault()
+  <script>
+    const targetUrl = document.querySelector("#targetUrl");
+    const urlLabel = document.querySelector("#url-label");
+    const btn = document.querySelector("#submit-btn");
 
-        // TEMPLATE INTERPOLATION
-        fetch(`http://localhost:5000/scrape?target_url=${targetUrl.value}`)
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      urlLabel.innerHTML = `Target URL: ${targetUrl.value} sent!`
+      // TEMPLATE INTERPOLATION
+      fetch(`http://localhost:5000/scrape?target_url=${targetUrl.value}`)
         .then((res) => res.json())
         .then((response) => {
-            console.log(response)
+          console.log(response);
         })
-        .catch(e => console.log(e))
-      })
-
-</script>
+        .catch((e) => console.log(e));
+    });
+  </script>
 </html>
