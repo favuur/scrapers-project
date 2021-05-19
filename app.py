@@ -9,10 +9,23 @@ app.run(use_reloader=True)
 def performScrape(target_url):
     with urllib.request.urlopen(target_url) as response:
         html=response.read()
-        soup=BeautifulSoup(html,"html.parser").p
-        
-        print(soup)
+        soup=BeautifulSoup(html,"html.parser")
 
+        # LIST OF TAGS
+        # LOOP THROUGH THE LIST A, P, 
+
+        tags = [ "a", "b", "p", "div", "i", "abbr", "address", "base", "button", "input", "table", "sub", "table", "title", "u", "var"  ]
+        
+        totalElement = 0;
+        
+        for element in tags:
+            elementList=soup.find_all(element)
+            totalElement = len(elementList) + totalElement
+            for tag in elementList:
+                print(tag.text)
+
+        print("Ran a foor loop over: {} tags".format(totalElement))
+    
 @app.route('/')
 def hello_world():
     return render_template('index.html')
